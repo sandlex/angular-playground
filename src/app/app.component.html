@@ -8,4 +8,11 @@
       <button class="btn btn-default" [disabled]="username === ''" (click)="username = ''">Reset Username</button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-default" (click)="onDetailsClick()">Display Details</button>
+      <p *ngIf="displayDetails">Secret Password = tuna</p>
+      <p *ngFor="let log of logs" [ngStyle]="{backgroundColor: log.getColor()}" [ngClass]="{white: log.getIndex() >= 5}">{{log.getDate()}}</p>
+    </div>
+  </div>
 </div>
