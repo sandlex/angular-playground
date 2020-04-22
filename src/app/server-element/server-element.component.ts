@@ -10,7 +10,8 @@ export class ServerElementComponent implements OnInit {
   @Input('serverElement') element: {
     type: string,
     name: string,
-    content: string
+    content: string,
+    comment: string
   };
 
   constructor() { }
