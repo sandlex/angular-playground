@@ -1,3 +1,9 @@
+Following the [course](https://www.udemy.com/course/the-complete-guide-to-angular-2)
+
+Branching strategy:
+* separate branch for each chapter (e.g. the-basics, components-and-databinding)
+* master - for course project
+
 # MyFirstApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
