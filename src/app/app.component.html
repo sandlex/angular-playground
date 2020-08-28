@@ -1,15 +1,16 @@
 <div class="container">
-  <app-cockpit (serverCreated)="onServerAdded($event)" (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <app-game-control (tick)="onTick($event)"></app-game-control>
   <hr>
   <div class="row">
     <div class="col-xs-12">
-      <app-server-element *ngFor="let element of serverElements" [serverElement]="element">
-        <p #dataElement>
-          <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-          <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-          ( {{ element.comment }} )
-        </p>
-      </app-server-element>
+      <div *ngFor="let tick of ticks">
+        <div *ngIf="tick % 2 === 0; else odd">
+          <app-even [value]="tick"></app-even>
+        </div>
+        <ng-template #odd>
+          <app-odd [value]="tick"></app-odd>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
