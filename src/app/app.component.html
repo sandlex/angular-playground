@@ -13,5 +13,6 @@
     </div>
   </div>
   <p appBasicHighlight>hello</p>
-  <p appBetterHighlight>hello better directive</p>
+  <p [appBetterHighlight]="'blue'" [defaultColor]="'transparent'">hello better directive</p>
+  <p [appBetterHighlight]="'red'" defaultColor="transparent">hello better directive 2</p>
 </div>
