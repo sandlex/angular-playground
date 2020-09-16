@@ -1,10 +1,12 @@
 import {AfterContentInit, Component, ContentChild, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {LoggingService} from "../logging.service";
 
 @Component({
   selector: 'app-server-element',
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [LoggingService]
 })
 export class ServerElementComponent implements OnInit, AfterContentInit {
 
@@ -17,13 +19,13 @@ export class ServerElementComponent implements OnInit, AfterContentInit {
     comment: string
   };
 
-  constructor() { }
+  constructor(private loggingService: LoggingService) { }
 
   ngOnInit(): void {
   }
 
   ngAfterContentInit() {
-    console.log(this.dataElement.nativeElement.textContent);
+    this.loggingService.logRecord(this.dataElement.nativeElement.textContent);
   }
 
 }
