@@ -9,6 +9,8 @@ import { ServerElementComponent } from './server-element/server-element.componen
 import {BasicHighlightDirective} from "./basic-highlight/basic-highlight.directive";
 import {BetterHighlightDirective} from "./better-highlight/better-highlight.directive";
 import {UnlessDirective} from "./unless/unless.directive";
+import {LoggingService} from "./logging.service";
+import {AnotherService} from "./another.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import {UnlessDirective} from "./unless/unless.directive";
     BrowserModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [LoggingService, AnotherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

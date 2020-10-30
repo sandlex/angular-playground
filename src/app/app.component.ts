@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {LoggingService} from "./logging.service";
+import {AnotherService} from "./another.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [LoggingService]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   serverElements = [{type: 'server',
@@ -13,7 +13,7 @@ export class AppComponent {
     content: 'content',
     comment: 'comment'}];
 
-  constructor(private loggingService: LoggingService) {
+  constructor(private loggingService: LoggingService, private anotherService: AnotherService) {
   }
 
   onServerAdded(serverData: {serverName: string, serverContent: string, serverComment: string}) {
@@ -24,6 +24,7 @@ export class AppComponent {
       comment: serverData.serverComment
     });
     this.loggingService.logRecord('added server');
+    this.anotherService.doSomething();
   }
 
   onBlueprintAdded(blueprintData: {serverName: string, serverContent: string, serverComment: string}) {
@@ -34,6 +35,7 @@ export class AppComponent {
       comment: blueprintData.serverComment
     });
     this.loggingService.logRecord('added blueprint');
+    this.anotherService.doSomething();
   }
 
 }
