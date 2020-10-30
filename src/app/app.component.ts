@@ -1,43 +1,25 @@
 import { Component } from '@angular/core';
-import {LoggingService} from "./logging.service";
-import {AnotherService} from "./another.service";
+import {UsersService} from "./users.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UsersService]
 })
 export class AppComponent {
-  serverElements = [{type: 'server',
-    name: 'Server name',
-    content: 'content',
-    comment: 'comment'}];
 
-  constructor(private loggingService: LoggingService, private anotherService: AnotherService) {
-    this.anotherService.onSomeEvent.subscribe((value:string) => alert(value))
+  constructor(private usersService: UsersService) {
   }
 
-  onServerAdded(serverData: {serverName: string, serverContent: string, serverComment: string}) {
-    this.serverElements.push({
-      type: 'server',
-      name: serverData.serverName,
-      content: serverData.serverContent,
-      comment: serverData.serverComment
-    });
-    this.loggingService.logRecord('added server');
-    this.anotherService.doSomething();
+  onSetToInactive(id: number) {
+    this.usersService.deactivateUser(id);
+    console.log('onSetToInactive');
   }
 
-  onBlueprintAdded(blueprintData: {serverName: string, serverContent: string, serverComment: string}) {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: blueprintData.serverName,
-      content: blueprintData.serverContent,
-      comment: blueprintData.serverComment
-    });
-    this.loggingService.logRecord('added blueprint');
-    this.anotherService.doSomething();
-    this.anotherService.onSomeEvent.emit('Boo!');
+  onSetToActive(id: number) {
+    this.usersService.activateUser(id);
+    console.log('onSetToActive');
   }
 
 }

@@ -1,31 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 
-import { AppComponent } from './app.component';
-import { CockpitComponent } from './cockpit/cockpit.component';
-import { ServerElementComponent } from './server-element/server-element.component';
-import {BasicHighlightDirective} from "./basic-highlight/basic-highlight.directive";
-import {BetterHighlightDirective} from "./better-highlight/better-highlight.directive";
-import {UnlessDirective} from "./unless/unless.directive";
-import {LoggingService} from "./logging.service";
-import {AnotherService} from "./another.service";
+import {AppComponent} from './app.component';
+import {ActiveUsersComponent} from './active-users/active-users.component';
+import {InactiveUsersComponent} from './inactive-users/inactive-users.component';
+import {CounterService} from "./counter.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CockpitComponent,
-    ServerElementComponent,
-    BasicHighlightDirective,
-    BetterHighlightDirective,
-    UnlessDirective
+    ActiveUsersComponent,
+    InactiveUsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
   ],
-  providers: [LoggingService, AnotherService],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
