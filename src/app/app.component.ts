@@ -14,6 +14,7 @@ export class AppComponent {
     comment: 'comment'}];
 
   constructor(private loggingService: LoggingService, private anotherService: AnotherService) {
+    this.anotherService.onSomeEvent.subscribe((value:string) => alert(value))
   }
 
   onServerAdded(serverData: {serverName: string, serverContent: string, serverComment: string}) {
@@ -36,6 +37,7 @@ export class AppComponent {
     });
     this.loggingService.logRecord('added blueprint');
     this.anotherService.doSomething();
+    this.anotherService.onSomeEvent.emit('Boo!');
   }
 
 }
