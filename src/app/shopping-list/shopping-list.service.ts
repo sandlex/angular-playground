@@ -16,4 +16,11 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
+
+  addIngredients(ingredients: Ingredient[]) {
+    // this.ingredients.push(...ingredients); // spread operator - conversion of array into list
+    ingredients.forEach(ing => this.ingredients.push(ing));
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
+
 }
